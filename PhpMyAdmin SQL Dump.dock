@@ -1,0 +1,175 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 22-09-2017 a las 06:08:11
+-- Versión del servidor: 10.1.9-MariaDB
+-- Versión de PHP: 5.5.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `concejo_comunal`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `calle`
+--
+
+CREATE TABLE `calle` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codi_call` varchar(4) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `nomb_call` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `calle`
+--
+
+INSERT INTO `calle` (`codi_call`, `nomb_call`) VALUES
+('09-1', 'Principal Pueblo Viejo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clave`
+--
+
+CREATE TABLE `clave` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `clave_admi` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `clave`
+--
+
+INSERT INTO `clave` (`clave_admi`) VALUES
+('canaima');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contacto`
+--
+
+CREATE TABLE `contacto` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cedula` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `info` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `habitante`
+--
+
+CREATE TABLE `habitante` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cedu_habi` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `nomb_habi` varchar(25) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `apel_habi` varchar(25) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `nume_casa` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `codi_call` varchar(4) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `ano_resi` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `iden_habi` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `prof_habi` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `sexo_habi` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `fech_naci` date NOT NULL,
+  `disc_habi` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `esta_civi` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `nive_inst` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `pare_jefe` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `cedu_jefe` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `iden_jefe` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `folion` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `partida` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `embarazo` varchar(2) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `cne` varchar(2) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `incapacidad` varchar(2) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `trabajo` varchar(2) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `pencionado` varchar(2) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `tpencion` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `celular` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `patria` varchar(25) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `ingreso` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `registrador` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `manzana` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `necesidad` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `ubicacion` varchar(230) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagen`
+--
+
+CREATE TABLE `imagen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `avatar` longblob NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `integradorjefe`
+--
+
+CREATE TABLE `integradorjefe` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `trabajo` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `dtrabajo` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `total` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `actividadc` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `actividad` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `tendencia` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `terreno` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `eterreno` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `vivienda` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `sala` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `comedor` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `cosina` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `baño` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `habitaciones` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `ocva` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `terrenop` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `ocvb` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `paredes` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `pared` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `enceres` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `techo` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `sivih` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `csivih` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `politica` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `saludh` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `ayuda` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `plaga` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `mascota` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `tplaga` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `tmascota` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `patologia` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `tpatologia` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `apatologia` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `ayudap` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `exclucion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `cexcluir` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `informacion` varchar( ⬤
